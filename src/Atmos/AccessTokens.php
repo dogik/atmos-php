@@ -1,6 +1,8 @@
 <?php
 namespace Atmos;
 
+use \DOMDocument;
+
 class AccessToken extends AccessTokenType {
 	/**
 	 * Builds an AccessToken object from an XML string.

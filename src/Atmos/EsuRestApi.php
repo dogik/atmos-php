@@ -28,6 +28,7 @@ namespace Atmos;
 use \Exception;
 use \HTTP_Request2;
 use \Net_URL2;
+use \DOMDocument;
 
 require_once 'EsuInterface.php';
 require_once 'EsuObjects.php';
