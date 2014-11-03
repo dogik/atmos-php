@@ -218,7 +218,7 @@ class UploadHelper {
 		$this->stream = $fd;
 
 		// Initialize
-		if( ! is_a( $path, 'ObjectPath' ) ) {
+		if( ! is_a( $path, 'Atmos\ObjectPath' ) ) {
 			throw new EsuException( 'invalid object path' );
 		}
 		$id = null;

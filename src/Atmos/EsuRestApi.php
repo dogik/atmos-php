@@ -231,7 +231,7 @@ class EsuRestApi implements EsuApi {
 		if ( isset( $headers['x-emc-meta'] ) ) {
 		  $this->trace( 'meta ' . $headers['x-emc-meta'] );
 		}
-		if(is_a( $path, 'Keypool' )) {
+		if(is_a( $path, 'Atmos\Keypool' )) {
 			$headers['x-emc-pool'] = $path->getPool();
 		}
 		
@@ -326,7 +326,7 @@ class EsuRestApi implements EsuApi {
 			$headers['x-emc-token'] = $token;
 		}
 		
-		if(is_a( $id, 'Keypool' )) {
+		if(is_a( $id, 'Atmos\Keypool' )) {
 			$headers['x-emc-pool'] = $id->getPool();
 		}
 
@@ -398,7 +398,7 @@ class EsuRestApi implements EsuApi {
 			$headers['x-emc-utf8'] = 'true';
 		}
 		
-		if(is_a( $id, 'Keypool' )) {
+		if(is_a( $id, 'Atmos\Keypool' )) {
 			$headers['x-emc-pool'] = $id->getPool();
 		}
 		
@@ -461,7 +461,7 @@ class EsuRestApi implements EsuApi {
 		$headers['x-emc-uid'] = $this->uid;
 		$headers['Date'] = gmdate( 'r' );
 		
-		if(is_a( $id, 'Keypool' )) {
+		if(is_a( $id, 'Atmos\Keypool' )) {
 			$headers['x-emc-pool'] = $id->getPool();
 		}
 
@@ -497,7 +497,7 @@ class EsuRestApi implements EsuApi {
 		$headers['x-emc-uid'] = $this->uid;
 		$headers['Date'] = gmdate( 'r' );
 		// Add the destination path
-		if( is_a( $destination, 'ObjectPath' ) ) {
+		if( is_a( $destination, 'Atmos\ObjectPath' ) ) {
 			$destPath = $destination->__toString();
 		} else {
 			throw new EsuException( 'invalid object identifier' );
@@ -537,7 +537,7 @@ class EsuRestApi implements EsuApi {
 	 */
 	public function listDirectory( $id, $systemTags = null, $userTags = null, $limit = null, &$token = null ) {
 		// Initialize
-		$namespace = is_a( $id, 'ObjectPath' ) ? true : false;
+		$namespace = is_a( $id, 'Atmos\ObjectPath' ) ? true : false;
 
     	// Fetch this directory's content as a blob
    		$data = $this->readObject( $id, null, null, $systemTags, $userTags, $limit, $token );
@@ -622,7 +622,7 @@ class EsuRestApi implements EsuApi {
 			$headers['x-emc-utf8'] = 'true';
 		}
 		
-		if(is_a( $id, 'Keypool' )) {
+		if(is_a( $id, 'Atmos\Keypool' )) {
 			$headers['x-emc-pool'] = $id->getPool();
 		}
 
@@ -684,7 +684,7 @@ class EsuRestApi implements EsuApi {
 			$headers['x-emc-utf8'] = 'true';
 		}
 		
-		if(is_a( $id, 'Keypool' )) {
+		if(is_a( $id, 'Atmos\Keypool' )) {
 			$headers['x-emc-pool'] = $id->getPool();
 		}
 
@@ -734,7 +734,7 @@ class EsuRestApi implements EsuApi {
 			$headers['x-emc-utf8'] = 'true';
 		}
 		
-		if(is_a( $id, 'Keypool' )) {
+		if(is_a( $id, 'Atmos\Keypool' )) {
 			$headers['x-emc-pool'] = $id->getPool();
 		}
 		
@@ -783,7 +783,7 @@ class EsuRestApi implements EsuApi {
 			$headers['x-emc-utf8'] = 'true';
 		}
 		
-		if(is_a( $id, 'Keypool' )) {
+		if(is_a( $id, 'Atmos\Keypool' )) {
 			$headers['x-emc-pool'] = $id->getPool();
 		}
 
@@ -821,7 +821,7 @@ class EsuRestApi implements EsuApi {
 			throw new EsuException( 'MetadataTags cannot be null.' );
 		}
 		
-		if(is_a( $id, 'Keypool' )) {
+		if(is_a( $id, 'Atmos\Keypool' )) {
 			$headers['x-emc-pool'] = $id->getPool();
 		}
 		
@@ -856,7 +856,7 @@ class EsuRestApi implements EsuApi {
 		$headers['x-emc-uid'] = $this->uid;
 		$headers['Date'] = gmdate( 'r' );
 		
-		if(is_a( $id, 'Keypool' )) {
+		if(is_a( $id, 'Atmos\Keypool' )) {
 			$headers['x-emc-pool'] = $id->getPool();
 		}
 		
@@ -894,7 +894,7 @@ class EsuRestApi implements EsuApi {
 	 */
 	public function listObjects( $queryTag, $limit = null, &$token = null ) {
 		// If given a MetadataTag object, extract the tag name.
-		if( is_a( $queryTag, 'MetadataTag' ) ) {
+		if( is_a( $queryTag, 'Atmos\MetadataTag' ) ) {
 			$queryTag = $queryTag->getName();
 		}
 
@@ -950,7 +950,7 @@ class EsuRestApi implements EsuApi {
 	public function listObjectsWithMetadata( $queryTag, $systemTags = null, $userTags = null,
 			$limit = null, &$token = null ) {
 		// If given a MetadataTag object, extract the tag name.
-		if( is_a( $queryTag, 'MetadataTag' ) ) {
+		if( is_a( $queryTag, 'Atmos\MetadataTag' ) ) {
 			$queryTag = $queryTag->getName();
 		}
 
@@ -1013,7 +1013,7 @@ class EsuRestApi implements EsuApi {
 	 */
 	public function getListableTags( $queryTag = null ) {
 		// If given a MetadataTag object, extract the tag name.
-		if( is_a( $queryTag, 'MetadataTag' ) ) {
+		if( is_a( $queryTag, 'Atmos\MetadataTag' ) ) {
 			$queryTag = $queryTag->getName();
 		}
 
@@ -1103,7 +1103,7 @@ class EsuRestApi implements EsuApi {
 		$headers['x-emc-uid'] = $this->uid;
 		$headers['Date'] = gmdate( 'r' );
 		
-		if(is_a( $id, 'Keypool' )) {
+		if(is_a( $id, 'Atmos\Keypool' )) {
 			$headers['x-emc-pool'] = $id->getPool();
 		}
 		
@@ -1332,7 +1332,7 @@ class EsuRestApi implements EsuApi {
 		$headers['x-emc-uid'] = $this->uid;
 		$headers['Date'] = gmdate( 'r' );
 		
-		if(is_a( $id, 'Keypool' )) {
+		if(is_a( $id, 'Atmos\Keypool' )) {
 			$headers['x-emc-pool'] = $id->getPool();
 		}
 
@@ -1429,9 +1429,9 @@ class EsuRestApi implements EsuApi {
 		
 		// Check if $id is set
 		if($id != null) {
-			if( is_a( $id, 'ObjectId' ) ) {
+			if( is_a( $id, 'Atmos\ObjectId' ) ) {
 				$headers['x-emc-objectid'] = $id->__toString();
-			} elseif( is_a( $id, 'ObjectPath' ) ) {
+			} elseif( is_a( $id, 'Atmos\ObjectPath' ) ) {
 				if($this->utf8) {
 					$headers['x-emc-path'] = $this->urlencode($id->__toString());
 				} else {
@@ -2223,14 +2223,14 @@ class EsuRestApi implements EsuApi {
 	 * type.
 	 */
 	private function getResourcePath( $ctx, $id ) {
-		if( is_a( $id, 'ObjectId' ) ) {
+		if( is_a( $id, 'Atmos\ObjectId' ) ) {
 			return $ctx . '/objects/' . $id->__toString();
-		} elseif( is_a( $id, 'ObjectPath' ) ) {
+		} elseif( is_a( $id, 'Atmos\ObjectPath' ) ) {
 			$path = $id->__toString();
 			if ($path === '/')  { $path = '//'; }  // its the root directory
 			$str = $ctx . '/namespace' . $path;
 			return $str;
-		} elseif( is_a( $id, 'Keypool' ) ) {
+		} elseif( is_a( $id, 'Atmos\Keypool' ) ) {
 			return $ctx . '/namespace/' . $id;
 		} else {
 			throw new EsuException( 'invalid object identifier' );
