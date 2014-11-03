@@ -26,12 +26,12 @@
 namespace Atmos;
 
 use \Exception;
+use \HTTP_Request2;
+use \Net_URL2;
 
 require_once 'EsuInterface.php';
 require_once 'EsuObjects.php';
 require_once 'PEAR.php';
-require_once 'Net/URL2.php';
-require_once 'HTTP/Request2.php';
 require_once 'AccessTokens.php';
 
 /**
