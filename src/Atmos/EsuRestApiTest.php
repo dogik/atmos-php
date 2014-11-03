@@ -24,6 +24,7 @@
 //      ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE 
 //      POSSIBILITY OF SUCH DAMAGE.
 namespace Atmos;
+use \Exception;
 
 require_once 'EsuRestApi.php';
 //require_once 'PHPUnit/Framework.php';

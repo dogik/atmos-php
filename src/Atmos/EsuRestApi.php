@@ -25,6 +25,8 @@
 //      POSSIBILITY OF SUCH DAMAGE.
 namespace Atmos;
 
+use \Exception;
+
 require_once 'EsuInterface.php';
 require_once 'EsuObjects.php';
 require_once 'PEAR.php';
