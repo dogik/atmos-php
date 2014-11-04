@@ -1172,9 +1172,11 @@ class EsuRestApi implements EsuApi {
 	 * to force browsers alter their behavior (download vs. display inline) and
 	 * to override the filename for objects.  See RFCs 2183, 6266.  Support
 	 * varies by browser.  Only supported on Atmos 2.1.0+.
+	 * @param bool $returnUri defines either we need uri or url
+	 * @throws EsuException
 	 * @return string a URL that can be used to share the object's content
 	 */
-	public function getShareableUrl( $id, $expiration, $disposition=null ) {
+	public function getShareableUrl( $id, $expiration, $disposition=null, $returnUri=false ) {
 		// Compute the response
    		$resource = $this->getResourcePath( $this->context, $id );
        	$uidEnc = urlencode( $this->uid );
@@ -1190,7 +1192,10 @@ class EsuRestApi implements EsuApi {
        	if($disposition != null) {
        		$resource .= '&disposition=' . $this->urlencode($disposition);
        	}
-        $url = $this->proto . '://' . $this->host . ':' . $this->port . $resource;
+		if ($returnUri) {
+			return $resource;
+		}
+		$url = $this->proto . '://' . $this->host . ':' . $this->port . $resource;
 
 		// Return the response
 		return $url;
