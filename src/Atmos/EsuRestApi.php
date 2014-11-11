@@ -1718,6 +1718,8 @@ class EsuRestApi implements EsuApi {
 			$req->setConfig('follow_redirects', true);
 		}
 
+		$req->setConfig('connect_timeout', 999);
+
 		// Setup and return the HTTP request
 		if ( $this->monitor ) {
 			$req->attach($this->monitor);
