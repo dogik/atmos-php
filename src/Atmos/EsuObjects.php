@@ -54,7 +54,7 @@ class ObjectId extends Identifier {
 	/**
 	 * Regular expression used to validate identifiers.
 	 */
-	private static $ID_FORMAT = '/^[0-9a-f]{44}$/';
+	private static $ID_FORMAT = '/^[0-9a-f\-]{44,101}$/';
 	
 	/**
 	 * Stores the string representation of the identifier
